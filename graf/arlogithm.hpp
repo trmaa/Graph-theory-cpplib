@@ -14,7 +14,7 @@ namespace Graf {
 			if (!seen[u]) DFS_impl(G, u, seen, visit);
 	}
 
-	inline void DFS(Matriu G, int v, void (*cb)(int)) {
+	inline void DFS(const Matriu& G, int v, void (*cb)(int)) {
 		vector<bool> seen(G.grau());
 		DFS_impl(G, v, seen, cb);
 	}
