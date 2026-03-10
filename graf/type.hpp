@@ -60,10 +60,9 @@ namespace Graf {
 		int res = 0;
 		vector<bool> seen(this->grau());
 		for (int v = 0; v < this->grau(); v++) {
-			for (int u : this->at(v)) {
+			for (int u : this->at(v))
 				if (!seen[u])
 					res++;
-			}
 			seen[v] = true;
 		}
 		return res;
@@ -74,12 +73,11 @@ namespace Graf {
 		for (int v = 0; v < size; v++) {
 			cerr << v << "\t| ";
 			vector<int> arr;
-			for (int u = 0; u < size; u++) {
+			for (int u = 0; u < size; u++)
 				if (u != v) {
 					arr.push_back(u);
 					cerr << u << ' ';
 				}
-			}
 			this->push_back(arr);
 			cerr << endl;
 		}
