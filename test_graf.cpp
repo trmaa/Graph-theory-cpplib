@@ -8,41 +8,41 @@ static void fatal(string msg) {
 	exit(1);
 }
 
-static void graf_matriu_mida() {
+static void graf_matriu_Mida() {
 	for (int i = 0; i < 30; i++) {
-		cout << "test: graf matriu mida() case " << i << endl;
+		cout << "test: graf matriu Mida() case " << i << endl;
 		Graf::LlistaAdj G(Graf::Tipus::K, i);
-		cout << G.mida() << "==" << (i*i-i)/2 << endl;
-		if (G.mida() != (i*i-i)/2)
+		cout << G.Mida() << "==" << (i*i-i)/2 << endl;
+		if (G.Mida() != (i*i-i)/2)
 			fatal("Graf LlistaAdj -> MIDA()");
 	}
 
         for (int i = 0; i < 30; i++) {
-                cout << "test: graf matriu mida() case T" << i << endl;
+                cout << "test: graf matriu Mida() case T" << i << endl;
                 Graf::LlistaAdj G(Graf::Tipus::T, i);
                 int expected = (i > 0) ? i-1 : 0;  
-                cout << G.mida() << " == " << expected << " (arestes esperades)" << endl;
-                if (G.mida() != expected)
+                cout << G.Mida() << " == " << expected << " (arestes esperades)" << endl;
+                if (G.Mida() != expected)
                         fatal("Graf LlistaAdj T -> MIDA()");
         }
         
         
         for (int i = 0; i < 30; i++) {
-                cout << "test: graf matriu mida() case C" << i << endl;
+                cout << "test: graf matriu Mida() case C" << i << endl;
                 Graf::LlistaAdj G(Graf::Tipus::C, i);
                 int expected = i;  
-                cout << G.mida() << " == " << expected << " (arestes esperades)" << endl;
-                if (G.mida() != expected)
+                cout << G.Mida() << " == " << expected << " (arestes esperades)" << endl;
+                if (G.Mida() != expected)
                         fatal("Graf LlistaAdj C -> MIDA()");
         }
         
         
         for (int i = 4; i < 30; i++) {  
-                cout << "test: graf matriu mida() case W" << i << endl;
+                cout << "test: graf matriu Mida() case W" << i << endl;
                 Graf::LlistaAdj G(Graf::Tipus::W, i);
                 int expected = 2*i - 2;  
-                cout << G.mida() << " == " << expected << " (arestes esperades)" << endl;
-                if (G.mida() != expected)
+                cout << G.Mida() << " == " << expected << " (arestes esperades)" << endl;
+                if (G.Mida() != expected)
                         fatal("Graf LlistaAdj W -> MIDA()");
         }
 }
@@ -56,8 +56,9 @@ static void dfs_graf_matriu() {
 }
 
 int main() {
-	graf_matriu_mida();
+	graf_matriu_Mida();
 	//dfs_graf_matriu();
+	// TODO graus max i min
 	
 	cout << "end of tests!!!\n\nOK\n\n";
 }

@@ -15,7 +15,13 @@ namespace Graf {
 	}
 
 	inline void DFS(const LlistaAdj& G, int v, void (*cb)(int)) {
-		vector<bool> seen(G.grau());
+		vector<bool> seen(G.Ordre());
 		DFS_impl(G, v, seen, cb);
 	}
+
+	inline int grau(const LlistaAdj& G, int v) {
+		return G.at(v).size();
+	}
+
+	// TODO BFS
 };

@@ -20,8 +20,14 @@ namespace Graf {
 		LlistaAdj(vector<vector<int>> custom);
 		LlistaAdj(Tipus t, int size);
 
-		int grau() const;
-		int mida() const;
+		int Ordre() const;
+		int Mida() const;
+
+		int GrauMax() const;
+		int GrauMin() const;
+
+		int Radi() const;
+		int Diametre() const;
 
 	private:
 		void setupK(int size);
@@ -52,20 +58,36 @@ namespace Graf {
 		}
 	}
 
-	int LlistaAdj::grau() const { 
+	int LlistaAdj::Ordre() const { 
 		return this->size(); 
 	}
 
-	int LlistaAdj::mida() const {
+	int LlistaAdj::Mida() const {
 		int res = 0;
-		vector<bool> seen(this->grau());
-		for (int v = 0; v < this->grau(); v++) {
+		vector<bool> seen(this->Ordre());
+		for (int v = 0; v < this->Ordre(); v++) {
 			for (int u : this->at(v))
 				if (!seen[u])
 					res++;
 			seen[v] = true;
 		}
 		return res;
+	}
+
+	int LlistaAdj::GrauMax() const {
+		int max = 0;
+		for (auto v : *this)
+			if (v.size() > max)
+				max = v.size();
+		return max;
+	}
+
+	int LlistaAdj::GrauMin() const {
+		int min = 0;
+		for (auto v : *this)
+			if (v.size() < min)
+				min = v.size();
+		return min;
 	}
 
 	void LlistaAdj::setupK(int size) {
