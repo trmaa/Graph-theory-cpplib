@@ -8,7 +8,7 @@ using namespace std;
 namespace Graf {
 	enum Tipus { K, T, C, W };
 
-	class Matriu : vector<vector<int>> {
+	class LlistaAdj : vector<vector<int>> {
 	public:
 		using vector<vector<int>>::at;
 
@@ -16,9 +16,9 @@ namespace Graf {
 		 * Grafs matriu a partir d'altres grafs
 		 */
 
-		Matriu() = default;
-		Matriu(vector<vector<int>> custom);
-		Matriu(Tipus t, int size);
+		LlistaAdj() = default;
+		LlistaAdj(vector<vector<int>> custom);
+		LlistaAdj(Tipus t, int size);
 
 		int grau() const;
 		int mida() const;
@@ -30,10 +30,10 @@ namespace Graf {
 		void setupW(int size);
 	};	
 
-	Matriu::Matriu(vector<vector<int>> custom)
+	LlistaAdj::LlistaAdj(vector<vector<int>> custom)
 		: vector<vector<int>>(custom) {}
 
-	Matriu::Matriu(Tipus t, int size) {
+	LlistaAdj::LlistaAdj(Tipus t, int size) {
 		switch (t) {
 			case Tipus::K:
 				setupK(size);
@@ -52,11 +52,11 @@ namespace Graf {
 		}
 	}
 
-	int Matriu::grau() const { 
+	int LlistaAdj::grau() const { 
 		return this->size(); 
 	}
 
-	int Matriu::mida() const {
+	int LlistaAdj::mida() const {
 		int res = 0;
 		vector<bool> seen(this->grau());
 		for (int v = 0; v < this->grau(); v++) {
@@ -68,7 +68,7 @@ namespace Graf {
 		return res;
 	}
 
-	void Matriu::setupK(int size) {
+	void LlistaAdj::setupK(int size) {
 		cerr << "Graf complet K" << size << " -------------\n";
 		for (int v = 0; v < size; v++) {
 			cerr << v << "\t| ";
@@ -84,7 +84,7 @@ namespace Graf {
 		cerr << "-------------------------\n";
 	}
 
-	void Matriu::setupT(int size) {
+	void LlistaAdj::setupT(int size) {
 		cerr << "Graf camí T" << size << " -------------\n";
 		for (int v = 0; v < size; v++) {
 			cerr << v << "\t| ";
@@ -105,7 +105,7 @@ namespace Graf {
 		cerr << "-------------------------\n";
 	}
 
-	void Matriu::setupC(int size) {
+	void LlistaAdj::setupC(int size) {
 		cerr << "Graf cicle C" << size << " -------------\n";
 		for (int v = 0; v < size; v++) {
 			cerr << v << "\t| ";
@@ -135,7 +135,7 @@ namespace Graf {
 		cerr << "-------------------------\n";
 	}
 
-	void Matriu::setupW(int size) {
+	void LlistaAdj::setupW(int size) {
 		cerr << "Graf roda W" << size << " -------------\n";
 
 		if (size < 4) {

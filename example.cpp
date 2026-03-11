@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
 	cout << "G: Graf K10\n";
-	Graf::Matriu G(Graf::Tipus::K, 10);
+	Graf::LlistaAdj G(Graf::Tipus::K, 10);
 
 	cout << "mida: " << G.mida() << endl;
 
